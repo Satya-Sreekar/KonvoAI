@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Konvo AI - Revolutionizing Conversations</title>
   <style>
-    /* Basic Global Styles */
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Global Resets */
     * {
       margin: 0;
       padding: 0;
@@ -14,44 +19,60 @@
     body {
       font-family: Arial, sans-serif;
       background: #0A0A0A;
-      color: #ffffff;
+      color: #fff;
+      line-height: 1.5;
     }
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* Navigation Bar Styles */
+    /* Brand Colors (derived from Konvo logo) */
+    /* Example gradient from a deep purple to a lighter one */
+    /* You can fine-tune these values based on your specific brand palette */
+    :root {
+      --konvo-primary: #9C27B0;    /* Deep Purple */
+      --konvo-gradient-start: #9C27B0;  /* Start of gradient */
+      --konvo-gradient-end: #C642FC;    /* End of gradient */
+    }
+
+    /* Navigation Bar */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: #1A1A1A;
-      padding: 20px;
+      padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 999;
     }
     .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #E50914;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo img {
+      width: 140px; /* Adjust as needed */
+      height: auto;
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 1.5rem;
     }
     .nav-links a {
       color: #fff;
-      font-size: 16px;
-      padding: 6px 8px;
+      font-size: 1rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
       transition: background 0.3s;
     }
     .nav-links a:hover {
-      background: #E50914;
-      border-radius: 5px;
+      background: var(--konvo-primary);
+      color: #fff;
     }
+
     /* Dropdown for Industries */
     .dropdown {
       position: relative;
@@ -61,8 +82,8 @@
       display: none;
       position: absolute;
       background-color: #1A1A1A;
-      min-width: 150px;
-      top: 40px;
+      min-width: 140px;
+      top: 2rem;
       left: 0;
       border: 1px solid #333;
       border-radius: 5px;
@@ -70,13 +91,13 @@
     }
     .dropdown-content a {
       display: block;
-      padding: 10px;
+      padding: 0.5rem 1rem;
       color: #fff;
-      font-size: 14px;
-      text-align: left;
+      font-size: 0.9rem;
+      border-radius: 2px;
     }
     .dropdown-content a:hover {
-      background: #E50914;
+      background: var(--konvo-primary);
     }
     .dropdown:hover .dropdown-content {
       display: block;
@@ -85,61 +106,72 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, #1A1A1A, #0D0D0D);
+      padding: 80px 20px;
+      /* Gradient from brand purple to a slightly lighter purple */
+      background: linear-gradient(
+        to bottom right,
+        var(--konvo-gradient-start) 20%,
+        #0A0A0A 90%
+      );
     }
     .hero h1 {
-      font-size: 50px;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
     }
     .hero p {
-      font-size: 20px;
+      font-size: 1.125rem;
       max-width: 800px;
-      margin: auto;
-      margin-bottom: 30px;
-      line-height: 1.4;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
     }
     .cta-buttons {
-      margin-top: 20px;
+      margin-top: 1.5rem;
     }
     .cta-buttons a {
-      background: #E50914;
-      color: white;
-      padding: 15px 30px;
-      font-size: 18px;
+      background: #fff;
+      color: #0A0A0A;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
       border-radius: 5px;
-      margin: 10px;
+      margin: 0.5rem;
       display: inline-block;
-      transition: background 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
     .cta-buttons a:hover {
-      background: #FF0A1F;
+      background: var(--konvo-primary);
+      color: #fff;
     }
 
-    /* Section Titles */
+    /* Section Headings / Titles */
     section {
       padding: 60px 20px;
       text-align: center;
     }
     section h2 {
-      font-size: 35px;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--konvo-primary);
+    }
+    section p {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     /* About Us Section */
     .about-container {
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 2rem auto 0;
       text-align: left;
       line-height: 1.6;
     }
     .about-container h3 {
-      font-size: 24px;
-      margin-top: 20px;
-      color: #E50914;
+      font-size: 1.4rem;
+      margin-top: 1.5rem;
+      color: var(--konvo-primary);
     }
     .about-container p {
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
 
     /* Solutions Section */
@@ -147,177 +179,192 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 1.5rem;
       max-width: 1200px;
-      margin: auto;
+      margin: 2rem auto;
     }
     .solution-item {
       background: #1E1E1E;
-      padding: 20px;
+      padding: 2rem;
       border-radius: 8px;
       width: 300px;
       text-align: center;
       transition: transform 0.3s;
     }
-    .solution-item:hover {
-      transform: translateY(-5px);
-    }
     .solution-item h4 {
-      margin-bottom: 10px;
-      font-size: 20px;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: var(--konvo-primary);
     }
     .solution-item p {
-      font-size: 16px;
+      font-size: 0.95rem;
       line-height: 1.4;
+    }
+    .solution-item:hover {
+      transform: translateY(-5px);
     }
 
     /* Industries Section */
     .industry-list {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 1.5rem;
       flex-wrap: wrap;
       max-width: 1200px;
-      margin: auto;
+      margin: 2rem auto;
     }
     .industry {
       background: #1E1E1E;
-      padding: 20px;
+      padding: 1.5rem;
       border-radius: 8px;
-      width: 200px;
+      width: 220px;
       text-align: center;
       transition: transform 0.3s;
-      font-size: 18px;
+      font-size: 1rem;
+      line-height: 1.4;
     }
     .industry:hover {
       transform: translateY(-5px);
     }
 
+    .industry-details {
+      max-width: 1000px;
+      margin: 2rem auto;
+      text-align: left;
+      line-height: 1.6;
+    }
+    .industry-details h4 {
+      color: var(--konvo-primary);
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
     /* How It Works Section */
     .how-it-works .steps {
-      max-width: 1000px;
-      margin: 40px auto;
+      max-width: 800px;
+      margin: 2rem auto;
       text-align: left;
       line-height: 1.6;
     }
     .steps p {
-      margin-bottom: 15px;
+      margin-bottom: 1rem;
     }
     .steps strong {
-      color: #E50914;
+      color: var(--konvo-primary);
     }
 
     /* Resources Section */
     .resource-items {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 1.5rem;
       flex-wrap: wrap;
       max-width: 1200px;
-      margin: auto;
+      margin: 2rem auto;
     }
     .resource {
       background: #1E1E1E;
-      padding: 20px;
+      padding: 1.5rem;
       border-radius: 8px;
       width: 300px;
       transition: transform 0.3s;
+      text-align: left;
+    }
+    .resource h4 {
+      font-size: 1.2rem;
+      color: var(--konvo-primary);
+      margin-bottom: 0.5rem;
+    }
+    .resource p {
+      font-size: 0.95rem;
+      line-height: 1.4;
     }
     .resource:hover {
       transform: translateY(-5px);
-    }
-    .resource h4 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: #E50914;
-    }
-    .resource p {
-      font-size: 16px;
     }
 
     /* Contact Section */
     .contact-section {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 2rem auto 0;
       line-height: 1.6;
+      text-align: left;
     }
     .contact-section a {
-      color: #E50914;
+      color: var(--konvo-primary);
       text-decoration: underline;
     }
 
     /* Footer */
     footer {
       background: #1A1A1A;
-      padding: 40px 20px;
+      padding: 2rem;
       text-align: center;
+      margin-top: 2rem;
     }
     .footer-nav {
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
     .footer-nav a {
       margin: 0 8px;
-      font-size: 14px;
-      color: #ffffff;
+      font-size: 0.9rem;
+      color: #fff;
       transition: color 0.3s;
     }
     .footer-nav a:hover {
-      color: #E50914;
+      color: var(--konvo-primary);
     }
     .social-links {
-      margin-bottom: 10px;
+      margin-bottom: 0.5rem;
     }
     .social-links a {
       margin: 0 5px;
-      font-size: 16px;
+      font-size: 0.9rem;
     }
     .policy-links {
-      margin-top: 10px;
-      font-size: 14px;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
     }
     .policy-links a {
       margin: 0 8px;
-      color: #ffffff;
+      color: #fff;
     }
     .policy-links a:hover {
-      color: #E50914;
+      color: var(--konvo-primary);
     }
 
     /* Responsive Adjustments */
-    @media(max-width: 768px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-      .hero p {
-        font-size: 18px;
-      }
+    @media (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
       }
       .nav-links {
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
       }
       .solutions .solution-list,
-      .resource-items {
+      .resource-items,
+      .industry-list {
         flex-direction: column;
         align-items: center;
       }
       .solution-item,
-      .resource {
+      .resource,
+      .industry {
         width: 90% !important;
       }
-      .industries .industry-list {
-        flex-direction: column;
-        align-items: center;
-      }
-      .industry {
-        width: 80% !important;
-      }
-      .contact-section {
+      .about-container, .industry-details, .contact-section, .how-it-works .steps {
         width: 90%;
+        margin: 1.5rem auto;
       }
     }
   </style>
@@ -327,7 +374,10 @@
 
   <!-- NAVIGATION BAR -->
   <nav>
-    <div class="logo"><img src="konvo.png" style="height: 7.5vh;"></div>
+    <div class="logo">
+      <!-- Replace with your actual logo file name/path -->
+      <img src="konvo.png" alt="Konvo AI" />
+    </div>
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">About Us</a>
@@ -351,10 +401,10 @@
   <section id="home" class="hero">
     <h1>Revolutionizing Conversational AI</h1>
     <p>
-      Elevate Every Interaction with Konvo – the avant-garde in AI-powered engagement, 
-      where intelligence meets empathy. Seamlessly bridging human-machine interactions, 
-      Konvo transforms conversations into immersive, intelligent, and hyper-personalized 
-      experiences.
+      Elevate every interaction with Konvo – the avant-garde in AI-powered
+      engagement, where intelligence meets empathy. Seamlessly bridging
+      human-machine interactions, Konvo transforms conversations into
+      immersive, intelligent, and hyper-personalized experiences.
     </p>
     <div class="cta-buttons">
       <a href="#contact">Request a Demo</a>
@@ -366,50 +416,61 @@
   <section id="about">
     <h2>About Us</h2>
     <div class="about-container">
+      <p>
+        At Konvo, we don’t just build AI—we craft experiences. Powered by
+        state-of-the-art Generative AI, Deep Learning, and NLP, Konvo is a
+        powerhouse of conversational intelligence designed to amplify
+        engagement, streamline operations, and create meaningful connections
+        across industries.
+      </p>
       <h3>Our Vision & Mission</h3>
       <p>
-        At Konvo, we don’t just build AI—we craft experiences. Powered by 
-        state-of-the-art Generative AI, Deep Learning, and NLP, Konvo is a 
-        powerhouse of conversational intelligence designed to amplify engagement, 
-        streamline operations, and create meaningful connections across industries.
-      </p>
-      <p>
-        <strong>Vision:</strong> To redefine the paradigm of human-machine 
+        <strong>Vision:</strong> To redefine the paradigm of human-machine
         interaction through seamless AI-driven conversations.
       </p>
       <p>
-        <strong>Mission:</strong> Empower enterprises with cutting-edge AI 
-        solutions that enhance efficiency, customer satisfaction, and business 
-        scalability.
+        <strong>Mission:</strong> Empower enterprises with cutting-edge AI
+        solutions that enhance efficiency, customer satisfaction, and
+        business scalability.
       </p>
       <p>
-        Konvo isn’t just another chatbot—it’s an AI companion engineered to 
-        understand, adapt, and revolutionize engagement across industries.
+        Konvo isn’t just another chatbot—it’s an AI companion engineered to
+        understand, adapt, and revolutionize engagement. We prioritize
+        personalization, intelligent automation, and user-centric design to
+        ensure every interaction feels natural, seamless, and deeply engaging.
       </p>
     </div>
   </section>
 
   <!-- SOLUTIONS -->
   <section id="solutions" class="solutions">
-    <h2>Solutions</h2>
+    <h2>Our Solutions</h2>
+    <p>Discover how Konvo can transform your customer journey and workflows.</p>
     <div class="solution-list">
       <!-- AI-Powered Engagement -->
       <div class="solution-item">
         <h4>AI-Powered Engagement</h4>
-        <p>Drive customer interactions with intelligent conversations that adapt 
-        and learn in real-time.</p>
+        <p>
+          Konvo’s advanced algorithms drive intuitive, multi-turn conversations
+          that continuously learn and adapt to user behavior, ensuring
+          personalized interactions at every step.
+        </p>
       </div>
       <!-- Features & Capabilities -->
       <div class="solution-item">
         <h4>Features & Capabilities</h4>
-        <p>From advanced NLP to multi-language support, Konvo caters to the needs of 
-        diverse audiences and industries.</p>
+        <p>
+          Robust multi-language support, secure data handling, and seamless
+          cross-platform integration guarantee a truly global reach.
+        </p>
       </div>
-      <!-- Measurable Business Impact -->
+      <!-- Measurable Impact -->
       <div class="solution-item">
         <h4>Measurable Impact</h4>
-        <p>50% faster response times, up to 60% cost reduction, and a 30% increase 
-        in customer engagement.</p>
+        <p>
+          Realize up to 50% faster response times, cut costs by 60% with AI-driven
+          automation, and delight customers with 24/7 availability.
+        </p>
       </div>
     </div>
   </section>
@@ -417,74 +478,148 @@
   <!-- INDUSTRIES -->
   <section id="industries">
     <h2>Industries We Transform</h2>
-    <p style="max-width: 800px; margin: 0 auto 40px;">
-      Konvo revolutionizes engagement across key sectors, from healthcare to 
-      finance and beyond.
+    <p style="max-width: 800px; margin: 0 auto;">
+      Konvo revolutionizes engagement across key sectors—from healthcare to
+      finance—offering tailored solutions that adapt to diverse operational
+      needs.
     </p>
     <div class="industry-list">
       <!-- Healthcare -->
       <div class="industry" id="healthcare">
-        🏥 Healthcare
+        <strong>🏥 Healthcare</strong>
       </div>
       <!-- Hospitality & Travel -->
       <div class="industry" id="hospitality">
-        🏨 Hospitality & Travel
+        <strong>🏨 Hospitality & Travel</strong>
       </div>
       <!-- Banking & Finance -->
       <div class="industry" id="banking">
-        🏦 Banking & Finance
+        <strong>🏦 Banking & Finance</strong>
       </div>
       <!-- Education -->
       <div class="industry" id="education">
-        🎓 Education
+        <strong>🎓 Education</strong>
       </div>
+    </div>
+
+    <!-- Expanded details for each industry -->
+    <div class="industry-details">
+      <h4>Healthcare</h4>
+      <p>
+        <strong>AI-Powered Patient Experience:</strong> Reduce wait times and
+        automate appointment bookings with intelligent self-service kiosks.
+      </p>
+      <p>
+        <strong>Wayfinding & Smart Navigation:</strong> Provide patients and
+        visitors with interactive hospital maps and guided assistance.
+      </p>
+      <p>
+        <strong>Medical Information Concierge:</strong> AI-driven health
+        assistance for instant FAQs, symptom checkers, and more.
+      </p>
+
+      <h4>Hospitality & Travel</h4>
+      <p>
+        <strong>Contactless Check-In & Check-Out:</strong> Automated room
+        bookings and concierge services elevate guest experiences.
+      </p>
+      <p>
+        <strong>AI Travel Guide:</strong> Voice-powered travel assistants for
+        instant recommendations, bookings, and itinerary planning.
+      </p>
+      <p>
+        <strong>Airport & Cruise Terminals:</strong> Automate check-ins, gate
+        navigation, and onboard experiences with AI-enhanced kiosks.
+      </p>
+
+      <h4>Banking & Finance</h4>
+      <p>
+        <strong>Intelligent Banking Assistants:</strong> Self-service kiosks for
+        account management and transactions.
+      </p>
+      <p>
+        <strong>Loan & Credit Application Processing:</strong> Reduce paperwork
+        and expedite approvals with automated eligibility assessments.
+      </p>
+      <p>
+        <strong>Financial Guidance:</strong> AI-powered insights to help customers
+        make informed financial decisions.
+      </p>
+
+      <h4>Education & Smart Campuses</h4>
+      <p>
+        <strong>AI-Powered Student Engagement:</strong> Interactive campus
+        navigation, enrollment assistance, and resource discovery.
+      </p>
+      <p>
+        <strong>Self-Service Library & Academic Portals:</strong> Check book
+        availability, reserve study spaces, and access learning materials.
+      </p>
+      <p>
+        <strong>Exam Scheduling & Virtual Advising:</strong> AI-assisted course
+        recommendations and scheduling solutions.
+      </p>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
   <section id="how-it-works">
     <h2>How It Works</h2>
-    <div class="steps">
-      <p>
-        <strong>1. User Inquiry:</strong> The customer engages via voice, text, or 
-        touch-based interfaces.
-      </p>
-      <p>
-        <strong>2. AI Processing:</strong> Konvo’s powerful NLP and deep learning 
-        algorithms decode intent and context.
-      </p>
-      <p>
-        <strong>3. Smart Response Generation:</strong> Contextually aware, 
-        hyper-personalized answers delivered in real-time.
-      </p>
-      <p>
-        <strong>4. Seamless Execution:</strong> Konvo executes tasks, whether it’s 
-        booking an appointment, retrieving account details, or processing transactions.
-      </p>
+    <p style="max-width: 800px; margin: 0 auto;">
+      A streamlined four-step process integrates advanced AI, intuitive design,
+      and real-world functionality for seamless user experiences.
+    </p>
+    <div class="how-it-works">
+      <div class="steps">
+        <p>
+          <strong>1. User Inquiry:</strong> Engage via voice, text, or
+          touch-based interfaces—Konvo adapts to your platform of choice.
+        </p>
+        <p>
+          <strong>2. AI Processing:</strong> Powerful NLP and deep learning
+          decode intent and context, ensuring accurate interpretation of user
+          needs.
+        </p>
+        <p>
+          <strong>3. Smart Response Generation:</strong> Contextually aware,
+          hyper-personalized answers delivered in real-time.
+        </p>
+        <p>
+          <strong>4. Seamless Execution:</strong> Konvo executes tasks from
+          booking to account checks with minimal user friction.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- RESOURCES -->
   <section id="resources">
     <h2>Resources</h2>
-    <p style="max-width: 800px; margin: 0 auto 40px;">
-      Stay informed with the latest in AI trends, success stories, and thought leadership.
+    <p style="max-width: 800px; margin: 0 auto;">
+      Stay informed with the latest AI trends, success stories, and thought
+      leadership from the Konvo team.
     </p>
     <div class="resource-items">
-      <!-- Blog & Thought Leadership -->
       <div class="resource">
         <h4>Blog & Thought Leadership</h4>
-        <p>Insights, opinions, and discussions on the evolving AI landscape.</p>
+        <p>
+          Explore the evolving AI landscape with expert insights, discussions,
+          and ideas shaping the future of conversational AI.
+        </p>
       </div>
-      <!-- Case Studies & Success Stories -->
       <div class="resource">
         <h4>Case Studies & Success Stories</h4>
-        <p>Real-world examples of how Konvo has driven measurable value for clients.</p>
+        <p>
+          Learn how Konvo has driven measurable value for clients across various
+          industries, backed by real-world data and ROI.
+        </p>
       </div>
-      <!-- AI Trends & Innovations -->
       <div class="resource">
         <h4>AI Trends & Innovations</h4>
-        <p>Explore emerging technologies and breakthroughs shaping the future of AI.</p>
+        <p>
+          Dive into emerging technologies and breakthroughs that are redefining
+          the possibilities of AI-driven interactions.
+        </p>
       </div>
     </div>
   </section>
@@ -492,23 +627,28 @@
   <!-- CONTACT -->
   <section id="contact">
     <h2>Contact Us</h2>
+    <p style="max-width: 800px; margin: 0 auto;">
+      Ready to see Konvo in action? Book a Demo or Get in Touch for tailored AI
+      solutions.
+    </p>
     <div class="contact-section">
       <p>
-        Ready to see Konvo in action? Book a Demo or Get in Touch for tailored AI solutions.
-      </p>
-      <p>
-        <strong>Email:</strong> 
+        <strong>Email:</strong>
         <a href="mailto:hello@konvoai.tech">hello@konvoai.tech</a>
       </p>
       <p>
-        <strong>Website:</strong> 
+        <strong>Website:</strong>
         <a href="https://www.konvoai.tech" target="_blank">www.konvoai.tech</a>
       </p>
       <p>
-        <strong>Follow us:</strong> 
+        <strong>Follow us:</strong>
         <a href="#">LinkedIn</a> | 
         <a href="#">Twitter</a> | 
         <a href="#">Facebook</a>
+      </p>
+      <p>
+        We look forward to collaborating with you to shape the future of 
+        conversational AI and elevate customer experiences to new heights.
       </p>
     </div>
   </section>
@@ -536,6 +676,5 @@
       <a href="#">Terms & Conditions</a>
     </div>
   </footer>
-
 </body>
 </html>
