@@ -1,328 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Konvo - Next-Level Kiosks</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konvo AI - Revolutionizing Conversations</title>
+  <style>
+    /* Basic Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0A0A0A;
+      color: #ffffff;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-      html
-      {
-        scroll-behavior: smooth;
-        /* hide scrollbar */
-        scrollbar-width: none;
-      }
-      body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        color: #fff;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        line-height: 1.8;
-      }
-      /* Header */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        background: linear-gradient(90deg, rgba(29, 78, 216, 1), rgba(59, 130, 246, 1));
-        padding: 2rem 2rem;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        transition: padding 0.3s ease;
-      }
-      header h1 {
-        font-size: 3.5rem;
-        margin: 0;
-        animation: glow 2s infinite;
-        font-weight: 800;
-      }
-      header p {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-top: 1rem;
-      }
-      @keyframes glow {
-        0%,
-        100% {
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-        50% {
-          text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-        }
-      }
+    /* Navigation Bar Styles */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1A1A1A;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #E50914;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: #fff;
+      font-size: 16px;
+      padding: 6px 8px;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover {
+      background: #E50914;
+      border-radius: 5px;
+    }
+    /* Dropdown for Industries */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #1A1A1A;
+      min-width: 150px;
+      top: 40px;
+      left: 0;
+      border: 1px solid #333;
+      border-radius: 5px;
+      z-index: 998;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      font-size: 14px;
+      text-align: left;
+    }
+    .dropdown-content a:hover {
+      background: #E50914;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-      /* Hero Section */
-      .hero {
-        position: relative;
-        text-align: center;
-        padding: 8rem 2rem 6rem;
-        background: linear-gradient(to bottom right, rgba(29, 78, 216, 0.4), rgba(59, 130, 246, 0.2)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 1;
-      }
-      .hero h2 {
-        position: relative;
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 2rem;
-        z-index: 2;
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #1A1A1A, #0D0D0D);
+    }
+    .hero h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 20px;
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+    .cta-buttons {
+      margin-top: 20px;
+    }
+    .cta-buttons a {
+      background: #E50914;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 5px;
+      margin: 10px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .cta-buttons a:hover {
+      background: #FF0A1F;
+    }
+
+    /* Section Titles */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 35px;
+      margin-bottom: 30px;
+    }
+
+    /* About Us Section */
+    .about-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: left;
+      line-height: 1.6;
+    }
+    .about-container h3 {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #E50914;
+    }
+    .about-container p {
+      margin-bottom: 20px;
+    }
+
+    /* Solutions Section */
+    .solutions .solution-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .solution-item {
+      background: #1E1E1E;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .solution-item:hover {
+      transform: translateY(-5px);
+    }
+    .solution-item h4 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    .solution-item p {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    /* Industries Section */
+    .industry-list {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .industry {
+      background: #1E1E1E;
+      padding: 20px;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+      transition: transform 0.3s;
+      font-size: 18px;
+    }
+    .industry:hover {
+      transform: translateY(-5px);
+    }
+
+    /* How It Works Section */
+    .how-it-works .steps {
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: left;
+      line-height: 1.6;
+    }
+    .steps p {
+      margin-bottom: 15px;
+    }
+    .steps strong {
+      color: #E50914;
+    }
+
+    /* Resources Section */
+    .resource-items {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .resource {
+      background: #1E1E1E;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+    .resource:hover {
+      transform: translateY(-5px);
+    }
+    .resource h4 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #E50914;
+    }
+    .resource p {
+      font-size: 16px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .contact-section a {
+      color: #E50914;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #1A1A1A;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-nav {
+      margin-bottom: 20px;
+    }
+    .footer-nav a {
+      margin: 0 8px;
+      font-size: 14px;
+      color: #ffffff;
+      transition: color 0.3s;
+    }
+    .footer-nav a:hover {
+      color: #E50914;
+    }
+    .social-links {
+      margin-bottom: 10px;
+    }
+    .social-links a {
+      margin: 0 5px;
+      font-size: 16px;
+    }
+    .policy-links {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .policy-links a {
+      margin: 0 8px;
+      color: #ffffff;
+    }
+    .policy-links a:hover {
+      color: #E50914;
+    }
+
+    /* Responsive Adjustments */
+    @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
       }
       .hero p {
-        position: relative;
-        z-index: 2;
-        font-size: 1.2rem;
-        margin-bottom: 3rem;
+        font-size: 18px;
       }
-      .hero img {
-        position: relative;
-        z-index: 2;
-        width: 60%;
-        max-width: 600px;
-        animation: bounce 2s infinite;
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
       }
-      .hero .cta-btn {
-        position: relative;
-        z-index: 2;
-        display: inline-block;
-        margin-top: 2rem;
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-        border: none;
-        border-radius: 8px;
-        background: #1d4ed8;
-        color: #fff;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        transition: background 0.3s ease;
-      }
-      .hero .cta-btn:hover {
-        background: #3b82f6;
-      }
-
-      /* Shape Divider */
-      .shape-divider {
-        position: relative;
-        margin-top: -5rem;
-      }
-      .shape-divider svg {
-        display: block;
-        width: 100%;
-        height: 100px;
-      }
-      .shape-divider .shape-fill {
-        fill: #fff;
-      }
-
-      /* Features Section */
-      .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin: 6rem 7rem 4rem;
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      }
-      .feature-card {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 3rem 2rem;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      .feature-card i {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: #3b82f6;
-      }
-      .feature-card:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-      }
-      .feature-card h3 {
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin: 1rem 0 0.5rem;
-      }
-      .feature-card p {
-        font-size: 1.2rem;
-        font-weight: 400;
-        margin-top: 1rem;
-      }
-
-      /* Gallery Section */
-      .gallery-container {
-        margin: 4rem 2rem;
-      }
-      .gallery-heading {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-      .gallery {
-        display: flex;
-        justify-content: center;
+      .nav-links {
         flex-wrap: wrap;
-        gap: 2rem;
-        padding: 2rem 0;
+        gap: 10px;
+        margin-top: 10px;
       }
-      .gallery img {
-        width: 40%;
-        max-width: 400px;
-        border-radius: 12px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      .solutions .solution-list,
+      .resource-items {
+        flex-direction: column;
+        align-items: center;
       }
-      .gallery img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      .solution-item,
+      .resource {
+        width: 90% !important;
       }
-
-      /* Footer */
-      footer {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: rgba(0, 0, 0, 0.9);
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.2rem;
-        font-weight: 600;
+      .industries .industry-list {
+        flex-direction: column;
+        align-items: center;
       }
-      footer a {
-        color: #3b82f6;
-        text-decoration: none;
+      .industry {
+        width: 80% !important;
       }
-      footer a:hover {
-        text-decoration: underline;
+      .contact-section {
+        width: 90%;
       }
-
-      /* Responsive Adjustments */
-      @media (max-width: 768px) {
-        header h1 {
-          font-size: 2.5rem;
-        }
-        .hero h2 {
-          font-size: 2rem;
-        }
-        .hero img {
-          width: 80%;
-        }
-        .features {
-          margin: 4rem 0rem;
-          padding: 1.5rem;
-        }
-      }
-    </style>
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Konvo - The Future is Here</h1>
-        <p>The most revolutionary kiosk system ever created</p>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2 class="animate__animated animate__fadeIn">Step into a new era of intelligent interactions</h2>
-        <p>Empowering businesses with next-level solutions.</p>
-        <img src="konvo.png" alt="Futuristic Kiosk" class="mb-4" />
-        <!-- <button class="cta-btn animate__animated animate__pulse animate__infinite">Get Started</button> -->
-    </section>
-
-    <!-- Shape Divider -->
-    <div class="shape-divider">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path
-          d="M985.66,83.31c-41.25-6.15-83.06-12.13-124.14-3.77C815,88.08,793.17,111.49,769.74,120H0V0H1200V120C1112.59,120,1068.27,91.94,985.66,83.31Z"
-          class="shape-fill"
-        ></path>
-      </svg>
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="logo"><img src="konvo.png" style="height: 7.5vh;"></div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#solutions">Solutions</a>
+      <div class="dropdown">
+        <a href="#industries">Industries ▾</a>
+        <div class="dropdown-content">
+          <a href="#healthcare">🏥 Healthcare</a>
+          <a href="#hospitality">🏨 Hospitality & Travel</a>
+          <a href="#banking">🏦 Banking & Finance</a>
+          <a href="#education">🎓 Education</a>
+        </div>
+      </div>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
     </div>
+  </nav>
 
-    <!-- Features Section -->
-    <section class="features container">
-        <div class="feature-card">
-            <i class="fas fa-user-secret"></i>
-            <h3>Face Detection</h3>
-            <p>Advanced AI-based face detection to engage users instantly.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-globe"></i>
-            <h3>Multi-Language Support</h3>
-            <p>Communicate in over 200 languages, powered by cutting-edge technology.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-tv"></i>
-            <h3>Interactive Design</h3>
-            <p>Responsive touchscreens with sleek animations and seamless UX.</p>
-        </div>
-    </section>
+  <!-- HERO / HOME -->
+  <section id="home" class="hero">
+    <h1>Revolutionizing Conversational AI</h1>
+    <p>
+      Elevate Every Interaction with Konvo – the avant-garde in AI-powered engagement, 
+      where intelligence meets empathy. Seamlessly bridging human-machine interactions, 
+      Konvo transforms conversations into immersive, intelligent, and hyper-personalized 
+      experiences.
+    </p>
+    <div class="cta-buttons">
+      <a href="#contact">Request a Demo</a>
+      <a href="#contact">Get Started</a>
+    </div>
+  </section>
 
-    <!-- Gallery -->
-    <section class="gallery-container">
-      <div class="gallery-heading">
-        <h2>Gallery</h2>
-        <p>Take a peek at how Konvo fits into modern environments.</p>
+  <!-- ABOUT US -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about-container">
+      <h3>Our Vision & Mission</h3>
+      <p>
+        At Konvo, we don’t just build AI—we craft experiences. Powered by 
+        state-of-the-art Generative AI, Deep Learning, and NLP, Konvo is a 
+        powerhouse of conversational intelligence designed to amplify engagement, 
+        streamline operations, and create meaningful connections across industries.
+      </p>
+      <p>
+        <strong>Vision:</strong> To redefine the paradigm of human-machine 
+        interaction through seamless AI-driven conversations.
+      </p>
+      <p>
+        <strong>Mission:</strong> Empower enterprises with cutting-edge AI 
+        solutions that enhance efficiency, customer satisfaction, and business 
+        scalability.
+      </p>
+      <p>
+        Konvo isn’t just another chatbot—it’s an AI companion engineered to 
+        understand, adapt, and revolutionize engagement across industries.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions" class="solutions">
+    <h2>Solutions</h2>
+    <div class="solution-list">
+      <!-- AI-Powered Engagement -->
+      <div class="solution-item">
+        <h4>AI-Powered Engagement</h4>
+        <p>Drive customer interactions with intelligent conversations that adapt 
+        and learn in real-time.</p>
       </div>
-      <div class="gallery">
-        <img src="image2.webp" alt="Kiosk in Mall" />
-        <!-- <img src="image1.webp" alt="Kiosk in Retail" /> -->
+      <!-- Features & Capabilities -->
+      <div class="solution-item">
+        <h4>Features & Capabilities</h4>
+        <p>From advanced NLP to multi-language support, Konvo caters to the needs of 
+        diverse audiences and industries.</p>
       </div>
-    </section>
+      <!-- Measurable Business Impact -->
+      <div class="solution-item">
+        <h4>Measurable Impact</h4>
+        <p>50% faster response times, up to 60% cost reduction, and a 30% increase 
+        in customer engagement.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>Designed with <span style="color: red;">❤</span> by ThinkOmega</p>
-        <p><a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
-    </footer>
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <h2>Industries We Transform</h2>
+    <p style="max-width: 800px; margin: 0 auto 40px;">
+      Konvo revolutionizes engagement across key sectors, from healthcare to 
+      finance and beyond.
+    </p>
+    <div class="industry-list">
+      <!-- Healthcare -->
+      <div class="industry" id="healthcare">
+        🏥 Healthcare
+      </div>
+      <!-- Hospitality & Travel -->
+      <div class="industry" id="hospitality">
+        🏨 Hospitality & Travel
+      </div>
+      <!-- Banking & Finance -->
+      <div class="industry" id="banking">
+        🏦 Banking & Finance
+      </div>
+      <!-- Education -->
+      <div class="industry" id="education">
+        🎓 Education
+      </div>
+    </div>
+  </section>
 
-    <script>
-      // Header shrink on scroll
-      const header = document.querySelector('header');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.style.padding = '2rem 2rem';
-        } else {
-          header.style.padding = '4rem 2rem';
-        }
-      });
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <p>
+        <strong>1. User Inquiry:</strong> The customer engages via voice, text, or 
+        touch-based interfaces.
+      </p>
+      <p>
+        <strong>2. AI Processing:</strong> Konvo’s powerful NLP and deep learning 
+        algorithms decode intent and context.
+      </p>
+      <p>
+        <strong>3. Smart Response Generation:</strong> Contextually aware, 
+        hyper-personalized answers delivered in real-time.
+      </p>
+      <p>
+        <strong>4. Seamless Execution:</strong> Konvo executes tasks, whether it’s 
+        booking an appointment, retrieving account details, or processing transactions.
+      </p>
+    </div>
+  </section>
 
-      // Gallery interactivity
-      const images = document.querySelectorAll('.gallery img');
-      images.forEach((img) => {
-        img.addEventListener('click', () => {
-          alert('You clicked on an image! Experience the future of kiosks.');
-        });
-      });
+  <!-- RESOURCES -->
+  <section id="resources">
+    <h2>Resources</h2>
+    <p style="max-width: 800px; margin: 0 auto 40px;">
+      Stay informed with the latest in AI trends, success stories, and thought leadership.
+    </p>
+    <div class="resource-items">
+      <!-- Blog & Thought Leadership -->
+      <div class="resource">
+        <h4>Blog & Thought Leadership</h4>
+        <p>Insights, opinions, and discussions on the evolving AI landscape.</p>
+      </div>
+      <!-- Case Studies & Success Stories -->
+      <div class="resource">
+        <h4>Case Studies & Success Stories</h4>
+        <p>Real-world examples of how Konvo has driven measurable value for clients.</p>
+      </div>
+      <!-- AI Trends & Innovations -->
+      <div class="resource">
+        <h4>AI Trends & Innovations</h4>
+        <p>Explore emerging technologies and breakthroughs shaping the future of AI.</p>
+      </div>
+    </div>
+  </section>
 
-      // CTA button click
-      const ctaBtn = document.querySelector('.cta-btn');
-      ctaBtn.addEventListener('click', () => {
-        alert('Welcome to the future of kiosks!');
-      });
-    </script>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-section">
+      <p>
+        Ready to see Konvo in action? Book a Demo or Get in Touch for tailored AI solutions.
+      </p>
+      <p>
+        <strong>Email:</strong> 
+        <a href="mailto:hello@konvoai.tech">hello@konvoai.tech</a>
+      </p>
+      <p>
+        <strong>Website:</strong> 
+        <a href="https://www.konvoai.tech" target="_blank">www.konvoai.tech</a>
+      </p>
+      <p>
+        <strong>Follow us:</strong> 
+        <a href="#">LinkedIn</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">Facebook</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-nav">
+      <!-- Quick Links -->
+      <span>Quick Links:</span>
+      <a href="#home">Home</a> | 
+      <a href="#about">About</a> | 
+      <a href="#solutions">Solutions</a> | 
+      <a href="#industries">Industries</a> | 
+      <a href="#resources">Blog</a> | 
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="social-links">
+      <span>Follow Us:</span>
+      <a href="#">LinkedIn</a> 
+      <a href="#">Twitter</a> 
+      <a href="#">Facebook</a>
+    </div>
+    <div class="policy-links">
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </footer>
+
 </body>
 </html>
